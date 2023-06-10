@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="location-container">
+   <span  class="span">Location</span> 
+    <select (change)="updateLocationId($event)">
+      <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
+    </select>
+  </div>
+</div>
+  <div class="student-container">
+    <!-- <router-outlet></router-outlet> -->
+    <!-- <app-student></app-student> -->
+  </div>
+

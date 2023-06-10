@@ -1,0 +1,49 @@
+<div *ngIf="studentId" class="leave-detail">
+  <div>
+    <h2 class="h2">Leaves Details</h2>
+    <div *ngIf="Leaves.length > 0">
+      <table mat-table [dataSource]="dataSource" matSort class="content">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header="id">ID</th>
+          <td mat-cell *matCellDef="let leave">{{ leave?.id }}</td>
+        </ng-container>
+        <ng-container matColumnDef="startdate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header="startdate">
+            Start Date
+          </th>
+          <td mat-cell *matCellDef="let leave">{{ leave?.startdate }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="enddate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header="enddate">
+            End Date
+          </th>
+          <td mat-cell *matCellDef="let leave">{{ leave?.enddate }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="reason">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Reason</th>
+          <td mat-cell *matCellDef="let leave">{{ leave?.reason }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+          <td mat-cell *matCellDef="let leave">{{ leave?.type }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplayLeave"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplayLeave"></tr>
+      </table>
+    </div>
+    <div *ngIf="Leaves.length === 0">
+      <p>No leaves found.</p>
+    </div>
+
+    <mat-paginator
+      [length]="Leaves.length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+    >
+    </mat-paginator>
+  </div>
+</div>

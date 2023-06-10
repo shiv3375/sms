@@ -1,0 +1,43 @@
+<div class="add-button">
+  <button mat-raised-button color="primary" (click)="handleOpenDialogAdd()">
+    Add Student
+  </button>
+</div>
+<div class="stu-details">
+  <div *ngIf="selectedStudent" style="flex-grow: 1">
+    <div class="edit-button">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="handleOpenDialogEdit()"
+        >
+          <span>Edit</span>
+        </button>
+      </mat-menu>
+    </div>
+    <table class="table">
+      <tr>
+        <td>Name:{{ selectedStudent?.name }}</td>
+        <td>ID:{{ selectedStudent?.id }}</td>
+        <td>DOB:{{ selectedStudent?.DOB }}</td>
+      </tr>
+      <tr>
+        <td>Department:{{ selectedStudent?.dept?.dept_name }}</td>
+        <td>DOJ:{{ selectedStudent?.DOJ }}</td>
+        <td>semester:{{ selectedStudent?.semester }}</td>
+      </tr>
+      <tr>
+        <td>HOD:{{ selectedStudent?.dept?.HOD }}</td>
+        <td>City:{{ selectedStudent?.cityId }}</td>
+      </tr>
+    </table>
+  </div>
+</div>

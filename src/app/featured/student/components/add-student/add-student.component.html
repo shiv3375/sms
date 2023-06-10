@@ -1,0 +1,98 @@
+<h2>{{ title }}</h2>
+
+<div class="add-form">
+  <mat-form [formGroup]="newStudentForm" class="student-form">
+    <mat-form-field class="form-field">
+      <input matInput placeholder="Name" formControlName="name" type="text" />
+      <mat-error *ngIf="newStudentForm.get('name')?.hasError('required')"
+        >Name is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Choose DOB</mat-label>
+      <input matInput [matDatepicker]="dob" formControlName="DOB" />
+      <mat-datepicker-toggle matIconSuffix [for]="dob"></mat-datepicker-toggle>
+      <mat-datepicker #dob></mat-datepicker>
+      <mat-error *ngIf="newStudentForm.get('DOB')?.hasError('required')"
+        >DOB is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Choose DOJ</mat-label>
+      <input matInput [matDatepicker]="doj" formControlName="DOJ" />
+      <mat-datepicker-toggle matIconSuffix [for]="doj"></mat-datepicker-toggle>
+      <mat-datepicker #doj></mat-datepicker>
+      <mat-error *ngIf="newStudentForm.get('DOJ')?.hasError('dateComparison')">
+        DOJ is required and it must be after DOB
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Select semester</mat-label>
+      <mat-select id="semester" formControlName="semester">
+        <mat-option *ngFor="let semester of semesters" [value]="semester">
+          {{ semester }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="newStudentForm.get('semester')?.hasError('required')"
+        >semester is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <input matInput placeholder="Grade" formControlName="grade" />
+      <mat-error *ngIf="newStudentForm.get('grade')?.hasError('required')"
+        >Grade is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Select Department</mat-label>
+      <mat-select
+        formControlName="dept_name"
+        (selectionChange)="onDepartmentSelected()"
+      >
+        <mat-option
+          *ngFor="let department of departments"
+          [value]="department.dept_name"
+        >
+          {{ department?.dept_name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="newStudentForm.get('dept_name')?.hasError('required')"
+        >Department is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <input matInput placeholder="Head of Department" formControlName="HOD" />
+      <mat-error *ngIf="newStudentForm.get('HOD')?.hasError('required')"
+        >HOD is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Select Location</mat-label>
+      <mat-select
+        formControlName="location"
+        (selectionChange)="onLocationSelected()"
+      >
+        <mat-option *ngFor="let location of locations" [value]="location.name">
+          {{ location?.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="newStudentForm.get('location')?.hasError('required')"
+        >Location is required</mat-error
+      >
+    </mat-form-field>
+  </mat-form>
+</div>
+
+<div class="dialog-buttons">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onSubmit()"
+    [disabled]="newStudentForm.invalid"
+  >
+    Add
+  </button>
+
+  <button mat-raised-button color="warn" (click)="closeDialog()">Cancel</button>
+</div>

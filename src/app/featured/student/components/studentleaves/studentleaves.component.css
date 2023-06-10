@@ -1,0 +1,129 @@
+.leave-detail {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 80px;
+  }
+  
+  .h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  .content {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th,
+  table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  table th {
+  
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    font-weight: 200;
+    font-style: italic;
+    color: black;
+    
+  }
+  
+  table td {
+    word-wrap: break-word;
+  }
+  
+  .mat-row:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .mat-row:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .mat-row:first-child {
+    border-top: 1px solid #ccc;
+  }
+  
+  .mat-header-row {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  .mat-cell,
+  .mat-header-cell {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    max-width: 200px;
+  }
+  
+  .content-container {
+    display: flex;
+    justify-content: space-between;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: large;
+    font-weight: 100;
+  }
+  
+  .list {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .list .h2 {
+    margin-top: 0;
+  }
+  
+  .list table {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .list table th,
+  .list table td {
+    padding: 12px;
+  }
+  
+  .list table th {
+    background-color: #f0f0f0;
+  }
+  
+  .list table td {
+    border-top: 1px solid #ccc;
+  }
+  
+  .list table td:first-child {
+    width: 30%;
+  }
+  
+  .list table td:last-child {
+    width: 70%;
+  }
+  
+  .list table td:not(:last-child) {
+    border-right: 1px solid #ccc;
+  }
+  
+  .list table td:nth-child(2n) {
+    background-color: #f9f9f9;
+  }
+  
+  .list table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .list table tr:first-child th,
+  .list table tr:first-child td {
+    border-top: none;
+  }
+  
+  .list table tr:hover {
+    background-color: #f0f0f0;
+  }
+  

@@ -1,0 +1,140 @@
+<!-- <div>
+  <button class="toggle-button">Toggle Table</button>
+
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Designation</th>
+      <th>Date of Joining</th>
+      <th>Experience</th>
+      <th>Subject</th>
+    </tr>
+    <tr *ngFor="let faculty of faculty">
+      <td>{{ faculty?.Name }}</td>
+      <td>{{ faculty?.Designation }}</td>
+      <td>{{ faculty?.DOJ }}</td>
+      <td>{{ faculty?.Experience }}</td>
+      <td>{{ faculty?.Subject }}</td>
+    </tr>
+  </table>
+</div> -->
+<!-- 
+<div class="table-container">
+  <button class="toggle-button" (click)="toggleGrouping()">
+    Toggle Grouping
+  </button>
+  <table class="table" *ngIf="showTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Designation</th>
+        <th>Date of Joining</th>
+        <th>Experience</th>
+        <th>Subject</th>
+        <th>Department</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="!groupedByDept">
+        <tr *ngFor="let faculty of faculty">
+          <td>{{ faculty?.Name }}</td>
+          <td>{{ faculty?.Designation }}</td>
+          <td>{{ faculty?.DOJ }}</td>
+          <td>{{ faculty?.Experience }}</td>
+          <td>{{ faculty?.Subject }}</td>
+          <td>{{ faculty?.Department }}</td>
+        </tr>
+      </ng-container>
+      <ng-container *ngIf="groupedByDept">
+        <ng-container *ngFor="let department of departments">
+            <tr>
+                <th colspan="6">
+                  <span class="expand-icon" (click)="toggleDepartment(department)">
+                    <i class="material-icons">
+                      {{ isDepartmentExpanded(department) ? 'expand_less' : 'expand_more' }}
+                    </i>
+                  </span>
+                  {{ department.dept_name }}
+                </th>
+              </tr>
+              <tr *ngIf="isDepartmentExpanded(department)">
+                <td colspan="6">
+                  <table class="inner-table">
+                    <tr *ngFor="let faculty of faculty | filterByDepartment: department.dept_name">
+                      <td>{{ faculty?.Name }}</td>
+                      <td>{{ faculty?.Designation }}</td>
+                      <td>{{ faculty?.DOJ }}</td>
+                      <td>{{ faculty?.Experience }}</td>
+                      <td>{{ faculty?.Subject }}</td>
+                      <td>{{ faculty?.Department }}</td>
+                    </tr>
+         
+     
+      </ng-container>
+    </tbody>
+  </table>
+</div> -->
+<div class="table-container">
+  <button class="toggle-button" (click)="toggleGrouping()">
+    Group By Dept
+  </button>
+  <table class="table" *ngIf="showTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Designation</th>
+        <th>Date of Joining</th>
+        <th>Experience</th>
+        <th>Subject</th>
+        <!-- <th>Department</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="!groupedByDept">
+        <tr *ngFor="let faculty of faculty">
+          <td>{{ faculty?.Name }}</td>
+          <td>{{ faculty?.Designation }}</td>
+          <td>{{ faculty?.DOJ }}</td>
+          <td>{{ faculty?.Experience }}</td>
+          <td>{{ faculty?.Subject }}</td>
+          <!-- <td>{{ faculty?.Department }}</td> -->
+        </tr>
+      </ng-container>
+      <ng-container *ngIf="groupedByDept">
+        <ng-container *ngFor="let department of departments">
+          <tr>
+            <th colspan="6">
+              <span class="expand-icon" (click)="toggleDepartment(department)">
+                <i class="material-icons">
+                  {{
+                    isDepartmentExpanded(department)
+                      ? "expand_less"
+                      : "expand_more"
+                  }}
+                </i>
+              </span>
+              {{ department.dept_name }}
+            </th>
+          </tr>
+          <tr *ngIf="isDepartmentExpanded(department)">
+            <td colspan="6">
+              <table class="inner-table">
+                <tr
+                  *ngFor="
+                    let faculty of faculty | deptfilter : department.dept_name
+                  "
+                >
+                  <td>{{ faculty?.Name }}</td>
+                  <td>{{ faculty?.Designation }}</td>
+                  <td>{{ faculty?.DOJ }}</td>
+                  <td>{{ faculty?.Experience }}</td>
+                  <td>{{ faculty?.Subject }}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </ng-container>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

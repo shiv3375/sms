@@ -1,0 +1,30 @@
+.add-form {
+  width: 700px;
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.add-form mat-form-field {
+  flex: 0 0 48%;
+  margin-bottom: 5px;
+}
+
+.student-form {
+  width: auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+h2 {
+  background-color: rgba(66, 66, 236, 0.849);
+  width: auto;
+  height: 50px;
+  color: white;
+}
+.form-field {
+  width: 100%;
+}

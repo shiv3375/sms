@@ -1,0 +1,48 @@
+<div>
+  <input
+    class="search"
+    type="text"
+    placeholder="Search"
+    [(ngModel)]="searchText"
+  />
+</div>
+
+<div class="list">
+  <ul class="student-list">
+    <cdk-virtual-scroll-viewport itemSize="5" class="example-viewport">
+      <div
+        class="example-item"
+        *cdkVirtualFor="
+          let student of students
+            | search : searchText : ['name', 'dept.dept_name']
+        "
+      >
+        <mat-list>
+          <mat-list-item
+            class="student-item"
+            [class.selected]="studentId === student.id"
+            (click)="handleShowStudent(student.id)"
+          >
+            <div>
+              {{ student?.name }} |
+              <div>
+                {{ student?.id }} | {{ student?.dept?.dept_name | acromym }}
+              </div>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </ul>
+
+  <div class="student-det-leaves">
+    <app-student-details
+      *ngIf="studentId !== null"
+      [id]="studentId"
+    ></app-student-details>
+    <app-studentleaves
+      *ngIf="studentId !== null"
+      [studentId]="studentId"
+    ></app-studentleaves>
+  </div>
+</div>
